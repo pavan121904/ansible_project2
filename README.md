@@ -8,8 +8,6 @@ This project is designed to create a robust monitoring and alerting system using
 - [Monitoring Tools](#monitoring-tools)
 - [Automation with Ansible](#automation-with-ansible)
 - [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
