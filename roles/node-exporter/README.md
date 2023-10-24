@@ -1,38 +1,58 @@
-Role Name
-=========
+# Ansible Role: Node Exporter
 
-A brief description of the role goes here.
+This Ansible role automates the installation and configuration of Node Exporter on your servers. Node Exporter is a Prometheus exporter that exposes system-level metrics.
 
-Requirements
-------------
+## Table of Contents
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- [Role Features](#role-features)
+- [Requirements](#requirements)
+- [Role Variables](#role-variables)
+- [Dependencies](#dependencies)
+- [Example Playbook](#example-playbook)
 
-Role Variables
---------------
+## Role Features
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This role provides the following features:
 
-Dependencies
-------------
+- Checks if Node Exporter is already installed.
+- Creates a system user for Node Exporter.
+- Downloads and installs Node Exporter if it's not already present or if the version is different.
+- Creates a systemd service for Node Exporter.
+- Ensures that the Node Exporter service is enabled and started.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Requirements
 
-Example Playbook
-----------------
+Before using this role, ensure that:
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+- You have a target server where you want to install Node Exporter.
+- You have Ansible installed on your local machine.
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+## Role Variables
 
-License
--------
+The role uses the following variables, which you can customize in your playbook:
 
-BSD
+- `node_exporter_bin`: Path to the Node Exporter binary.
+- `node_exporter_user`: User for running Node Exporter.
+- `node_exporter_dir_conf`: Directory for Node Exporter configuration.
+- `node_exporter_group`: Group for Node Exporter.
+- `node_exporter_version`: Version of Node Exporter to install.
 
-Author Information
-------------------
+## Dependencies
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role doesn't have any specific role dependencies.
+
+## Example Playbook
+
+Here's an example playbook that uses this role:
+
+```yaml
+- hosts: your_target_hosts
+  become: yes
+  vars:
+    node_exporter_bin: /usr/local/bin/node_exporter
+    node_exporter_user: node_exporter
+    node_exporter_dir_conf: /etc/node_exporter
+    node_exporter_group: node_exporter
+    node_exporter_version: 1.2.3  # Specify the desired version
+  roles:
+    - node-exporter
