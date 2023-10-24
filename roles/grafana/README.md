@@ -1,38 +1,49 @@
-Role Name
-=========
+# Ansible Role: Grafana
 
-A brief description of the role goes here.
+This Ansible role automates the installation and configuration of Grafana on your servers. Grafana is an open-source platform for monitoring and observability, allowing you to create customizable dashboards and visualize data from various data sources.
 
-Requirements
-------------
+## Table of Contents
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- [Role Features](#role-features)
+- [Requirements](#requirements)
+- [Role Variables](#role-variables)
+- [Dependencies](#dependencies)
 
-Role Variables
---------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Features
 
-Dependencies
-------------
+This role provides the following features:
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- Installation of Grafana on the target server.
+- Configuration of Grafana's systemd service.
+- Waiting for Grafana to be up and running.
+- Changing the admin password for the Grafana GUI.
 
-Example Playbook
-----------------
+## Requirements
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Before using this role, ensure that:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+- You have a target server where you want to install Grafana.
+- You have Ansible installed on your local machine.
 
-License
--------
+## Role Variables
 
-BSD
+The role uses the following variables, which you can customize in your playbook:
 
-Author Information
-------------------
+- `grafana_admin_password`: Set the admin password for Grafana.
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+## Dependencies
+
+This role doesn't have any specific role dependencies.
+
+## Example Playbook
+
+Here's an example playbook that uses this role:
+
+```yaml
+- hosts: your_target_hosts
+  become: yes
+  vars:
+    grafana_admin_password: YourSecurePassword
+  roles:
+    - grafana
