@@ -1,5 +1,0 @@
-[monitorserver]
-db_server   ansible_host=51.20.141.200   ansible_user=ubuntu  ansible_ssh_private_key_file=~/project-3/dynamic-inventory/ansible_key.pem
-[nodeservers]
-server1  ansible_host=172.31.19.18  ansible_user=ubuntu  ansible_ssh_private_key_file=~/project-3/dynamic-inventory/ansible_key.pem
-server2  ansible_host=172.31.28.52  ansible_user=ubuntu  ansible_ssh_private_key_file=~/project-3/dynamic-inventory/ansible_key.pem
