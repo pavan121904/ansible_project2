@@ -2,7 +2,7 @@ plugin: amazon.aws.aws_ec2
 regions:
   - eu-north-1
 keyed_groups:
-  - key: tags.Environment
+  - key: tags.Enviro
     prefix: environment
     separator: ''
     filter: tag:Environment=dev
